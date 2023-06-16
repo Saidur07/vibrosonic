@@ -8,14 +8,14 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const router = useRouter();
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   useEffect(() => {
     // If the user is not logged in, redirect to the login page
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (!isLoggedIn || isLoggedIn === false) {
       router.push("/login");
     }
-  }, [isLoggedIn, router]);
+  }, [router]);
   const handleLogout = () => {
     Swal.fire({
       title: "Are you sure?",
