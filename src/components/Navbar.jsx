@@ -10,7 +10,7 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // If the user is not logged in, redirect to the login page
+    // Perform localStorage action
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (!isLoggedIn || isLoggedIn === false) {
       router.push("/login");

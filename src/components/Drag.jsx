@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -8,8 +8,13 @@ import { Router } from "next/router";
 const Drag = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
   const router = useRouter();
-  const userEmail = localStorage.getItem("LoggedInEmail");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUserEmail(localStorage.getItem("LoggedInEmail"));
+    }
+  }, []);
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
